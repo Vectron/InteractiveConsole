@@ -28,6 +28,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteractiveConsole.Sandbox"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteractiveConsole.Tests", "tests\InteractiveConsole.Tests\InteractiveConsole.Tests.csproj", "{79476C6A-43B1-4538-A73E-1F5BE4A9CFFF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{4A77A58E-01FD-485B-91E0-D07BD8C989B4}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{E1A3A153-E358-49CE-948C-CD230C49BB5B}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\BuildTestDeploy.yml = .github\workflows\BuildTestDeploy.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +64,7 @@ Global
 		{018CB7CD-0112-4DE7-813B-05E0E927391A} = {8ABDEF79-ACD7-4D8F-A226-CC6538E44E5E}
 		{E521B3AE-2843-4046-9435-F1A0E80319DC} = {8ABDEF79-ACD7-4D8F-A226-CC6538E44E5E}
 		{79476C6A-43B1-4538-A73E-1F5BE4A9CFFF} = {0DBEF4F5-75EE-4A6F-8083-9F0F0FB4C02F}
+		{E1A3A153-E358-49CE-948C-CD230C49BB5B} = {4A77A58E-01FD-485B-91E0-D07BD8C989B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B2997A4C-418F-4C0D-A4B1-39F0A80D1774}
