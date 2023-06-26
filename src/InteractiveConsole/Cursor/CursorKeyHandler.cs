@@ -5,7 +5,7 @@ namespace InteractiveConsole.Cursor;
 /// <summary>
 /// Handles the keys for moving the cursor.
 /// </summary>
-public class CursorKeyHandler : IKeyHandler
+internal sealed class CursorKeyHandler : IKeyHandler
 {
     private readonly IConsoleCursor consoleCursor;
     private readonly IConsoleInput consoleInput;

@@ -3,7 +3,7 @@ namespace InteractiveConsole.KeyHandlers;
 /// <summary>
 /// Class for handling key strokes.
 /// </summary>
-internal interface IKeyHandler
+public interface IKeyHandler
 {
     /// <summary>
     /// Handle the keystroke.

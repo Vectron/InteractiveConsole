@@ -6,7 +6,7 @@ namespace InteractiveConsole.Input;
 /// <summary>
 /// A key handler for the enter key to start processing the command.
 /// </summary>
-public class EnterKeyHandler : IKeyHandler
+internal sealed class EnterKeyHandler : IKeyHandler
 {
     private readonly IConsoleCursor consoleCursor;
     private readonly IConsoleInput consoleInput;

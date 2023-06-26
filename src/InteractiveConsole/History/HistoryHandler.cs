@@ -3,7 +3,7 @@ namespace InteractiveConsole.History;
 /// <summary>
 /// A implementation of <see cref="IHistoryHandler"/>.
 /// </summary>
-public class HistoryHandler : IHistoryHandler
+internal sealed class HistoryHandler : IHistoryHandler
 {
     private const int MaxHistory = 10;
     private readonly LinkedList<string> history = new();

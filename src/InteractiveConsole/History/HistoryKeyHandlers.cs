@@ -6,7 +6,7 @@ namespace InteractiveConsole.History;
 /// <summary>
 /// Handles the keys for navigating the history.
 /// </summary>
-public class HistoryKeyHandlers : IKeyHandler
+internal sealed class HistoryKeyHandlers : IKeyHandler
 {
     private readonly IConsoleCursor consoleCursor;
     private readonly IConsoleInput consoleInput;

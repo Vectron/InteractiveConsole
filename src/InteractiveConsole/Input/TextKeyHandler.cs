@@ -6,7 +6,7 @@ namespace InteractiveConsole.Input;
 /// <summary>
 /// Handles the manipulating of text input.
 /// </summary>
-public class TextKeyHandler : IKeyHandler
+internal sealed class TextKeyHandler : IKeyHandler
 {
     private readonly IConsoleCursor consoleCursor;
     private readonly IConsoleInput consoleInput;
