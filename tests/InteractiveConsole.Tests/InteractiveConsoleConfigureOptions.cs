@@ -12,6 +12,6 @@ public class InteractiveConsoleConfigureOptions
         // When adding a new property to one of these types, ensure the corresponding
         // IConfigureOptions class is updated for the new property.
         var flags = BindingFlags.Public | BindingFlags.Instance;
-        Assert.AreEqual(9, typeof(ConsoleInputOptions).GetProperties(flags).Length);
+        Assert.AreEqual(2, typeof(ConsoleInputOptions).GetProperties(flags).Length);
     }
 }
