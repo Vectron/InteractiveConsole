@@ -61,7 +61,7 @@ public class TextKeyHandler : IKeyHandler
             return;
         }
 
-        if (keyInfo.KeyChar is > (char)32 and < (char)126)
+        if (keyInfo.KeyChar is >= (char)32 and <= (char)126)
         {
             var input = consoleInput.CurrentInput;
             if (consoleCursor.CursorIndex >= input.Length)
