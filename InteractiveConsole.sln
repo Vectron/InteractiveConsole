@@ -6,6 +6,10 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8ABDEF79-ACD7-4D8F-A226-CC6538E44E5E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0DBEF4F5-75EE-4A6F-8083-9F0F0FB4C02F}"
+	ProjectSection(SolutionItems) = preProject
+		tests\.editorconfig = tests\.editorconfig
+		tests\Directory.Build.props = tests\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6CDFE2CD-76FE-4932-9DF2-F1C807D30EDC}"
 	ProjectSection(SolutionItems) = preProject
@@ -18,11 +22,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		version.json = version.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractiveConsole", "src\InteractiveConsole\InteractiveConsole.csproj", "{018CB7CD-0112-4DE7-813B-05E0E927391A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteractiveConsole", "src\InteractiveConsole\InteractiveConsole.csproj", "{018CB7CD-0112-4DE7-813B-05E0E927391A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractiveConsole.Sandbox", "src\InteractiveConsole.Sandbox\InteractiveConsole.Sandbox.csproj", "{E521B3AE-2843-4046-9435-F1A0E80319DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteractiveConsole.Sandbox", "src\InteractiveConsole.Sandbox\InteractiveConsole.Sandbox.csproj", "{E521B3AE-2843-4046-9435-F1A0E80319DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractiveConsole.Tests", "tests\InteractiveConsole.Tests\InteractiveConsole.Tests.csproj", "{79476C6A-43B1-4538-A73E-1F5BE4A9CFFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InteractiveConsole.Tests", "tests\InteractiveConsole.Tests\InteractiveConsole.Tests.csproj", "{79476C6A-43B1-4538-A73E-1F5BE4A9CFFF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
