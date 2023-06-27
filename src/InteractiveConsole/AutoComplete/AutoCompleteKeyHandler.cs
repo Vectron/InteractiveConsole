@@ -8,7 +8,7 @@ namespace InteractiveConsole.AutoComplete;
 /// </summary>
 internal sealed class AutoCompleteKeyHandler : IKeyHandler
 {
-    private readonly IAutoCompleteHandler autoCompleteHandler;
+    private readonly IEnumerable<IAutoCompleteHandler> autoCompleteHandlers;
     private readonly IConsoleCursor consoleCursor;
     private readonly IConsoleInput consoleInput;
     private string rootText = string.Empty;
@@ -17,12 +17,12 @@ internal sealed class AutoCompleteKeyHandler : IKeyHandler
     /// <summary>
     /// Initializes a new instance of the <see cref="AutoCompleteKeyHandler"/> class.
     /// </summary>
-    /// <param name="autoCompleteHandler">A <see cref="IAutoCompleteHandler"/> instance.</param>
+    /// <param name="autoCompleteHandlers">A <see cref="IAutoCompleteHandler"/> instance.</param>
     /// <param name="consoleInput">A <see cref="IConsoleInput"/> instance.</param>
     /// <param name="consoleCursor">A <see cref="IConsoleCursor"/> instance.</param>
-    public AutoCompleteKeyHandler(IAutoCompleteHandler autoCompleteHandler, IConsoleInput consoleInput, IConsoleCursor consoleCursor)
+    public AutoCompleteKeyHandler(IEnumerable<IAutoCompleteHandler> autoCompleteHandlers, IConsoleInput consoleInput, IConsoleCursor consoleCursor)
     {
-        this.autoCompleteHandler = autoCompleteHandler;
+        this.autoCompleteHandlers = autoCompleteHandlers;
         this.consoleInput = consoleInput;
         this.consoleCursor = consoleCursor;
     }
@@ -43,9 +43,18 @@ internal sealed class AutoCompleteKeyHandler : IKeyHandler
             started = true;
         }
 
-        var suggestion = keyInfo.Modifiers == ConsoleModifiers.Shift
-            ? autoCompleteHandler.PreviousSuggestions(rootText)
-            : autoCompleteHandler.NextSuggestions(rootText);
+        string? suggestion = null;
+        foreach (var handler in autoCompleteHandlers)
+        {
+            suggestion = keyInfo.Modifiers == ConsoleModifiers.Shift
+                ? handler.PreviousSuggestions(rootText)
+                : handler.NextSuggestions(rootText);
+
+            if (suggestion != null)
+            {
+                break;
+            }
+        }
 
         consoleInput.CurrentInput = suggestion ?? rootText;
         consoleCursor.MoveEnd();

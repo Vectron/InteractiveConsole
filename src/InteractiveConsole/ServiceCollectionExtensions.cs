@@ -23,7 +23,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddConsoleCommand(this IServiceCollection services)
     {
         _ = services.AddInteractiveConsole();
-        services.TryAddSingleton<IAutoCompleteHandler, CommandAutoCompleteHandler>();
+        services.TryAddEnumerable(ServiceDescriptor.Singleton<IAutoCompleteHandler, CommandAutoCompleteHandler>());
         services.TryAddSingleton<IInputHandler, CommandInputHandler>();
         services.TryAddScoped<IConsoleCommandHierarchy, ConsoleCommandHierarchy>();
         return services;
