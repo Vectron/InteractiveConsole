@@ -8,6 +8,8 @@ namespace InteractiveConsole.Ansi;
 /// </summary>
 internal sealed class AnsiConsoleOutput : TextWriter, IConsoleOutput, IDisposable
 {
+    private static readonly Lazy<AnsiConsoleOutput> LazyInstance = new(() => new AnsiConsoleOutput());
+
     private readonly TextWriter stdOut;
     private readonly ReaderWriterLockSlim textLock = new(LockRecursionPolicy.SupportsRecursion);
     private string sanitizedText = string.Empty;
@@ -16,11 +18,16 @@ internal sealed class AnsiConsoleOutput : TextWriter, IConsoleOutput, IDisposabl
     /// <summary>
     /// Initializes a new instance of the <see cref="AnsiConsoleOutput"/> class.
     /// </summary>
-    public AnsiConsoleOutput()
+    private AnsiConsoleOutput()
     {
         stdOut = Console.Out;
         Console.SetOut(this);
     }
+
+    /// <summary>
+    /// Gets the singleton instance of this class.
+    /// </summary>
+    public static AnsiConsoleOutput Instance => LazyInstance.Value;
 
     /// <inheritdoc/>
     public override Encoding Encoding

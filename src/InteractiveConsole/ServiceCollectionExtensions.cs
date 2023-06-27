@@ -41,7 +41,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddInteractiveConsole(this IServiceCollection services)
     {
         services.TryAddSingleton<IConsoleInput, AnsiConsoleInput>();
-        services.TryAddSingleton<IConsoleOutput>(new AnsiConsoleOutput());
+        services.TryAddSingleton<IConsoleOutput>(AnsiConsoleOutput.Instance);
         services.TryAddSingleton<IConsoleCursor, AnsiConsoleCursor>();
         services.TryAddSingleton<IHistoryHandler, HistoryHandler>();
         services.TryAddEnumerable(ServiceDescriptor.Singleton<IKeyHandler, AutoCompleteKeyHandler>());
