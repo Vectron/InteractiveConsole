@@ -1,11 +1,11 @@
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace InteractiveConsole.Commands;
 
 /// <summary>
 /// A collection for holding <see cref="IConsoleCommand"/>.
 /// </summary>
-internal interface IConsoleCommandCollection
+public interface IConsoleCommandHierarchy
 {
     /// <summary>
     /// Get all the direct descendants for the given command arguments.

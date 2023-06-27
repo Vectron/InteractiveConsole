@@ -5,15 +5,15 @@ namespace InteractiveConsole.Commands;
 /// <summary>
 /// A tree collection for console commands.
 /// </summary>
-internal sealed class ConsoleCommandCollection : IConsoleCommandCollection
+internal sealed class ConsoleCommandHierarchy : IConsoleCommandHierarchy
 {
     private readonly ConsoleCommandNode root = new();
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="ConsoleCommandCollection"/> class.
+    /// Initializes a new instance of the <see cref="ConsoleCommandHierarchy"/> class.
     /// </summary>
     /// <param name="consoleCommands">The commands to add to this collection.</param>
-    public ConsoleCommandCollection(IEnumerable<IConsoleCommand> consoleCommands)
+    public ConsoleCommandHierarchy(IEnumerable<IConsoleCommand> consoleCommands)
     {
         foreach (var command in consoleCommands)
         {

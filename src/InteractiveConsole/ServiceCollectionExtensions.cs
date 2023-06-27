@@ -25,7 +25,7 @@ public static class ServiceCollectionExtensions
         _ = services.AddInteractiveConsole();
         services.TryAddSingleton<IAutoCompleteHandler, CommandAutoCompleteHandler>();
         services.TryAddSingleton<IInputHandler, CommandInputHandler>();
-        services.TryAddScoped<IConsoleCommandCollection, ConsoleCommandCollection>();
+        services.TryAddScoped<IConsoleCommandHierarchy, ConsoleCommandHierarchy>();
         return services;
     }
 

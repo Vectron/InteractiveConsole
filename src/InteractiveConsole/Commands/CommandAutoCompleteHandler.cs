@@ -7,7 +7,7 @@ namespace InteractiveConsole.Commands;
 /// </summary>
 internal sealed class CommandAutoCompleteHandler : IAutoCompleteHandler
 {
-    private readonly IConsoleCommandCollection consoleCommands;
+    private readonly IConsoleCommandHierarchy consoleCommands;
     private LinkedList<string> autoCompletions = new();
     private LinkedListNode<string>? current;
     private string rootCommand = string.Empty;
@@ -16,7 +16,7 @@ internal sealed class CommandAutoCompleteHandler : IAutoCompleteHandler
     /// Initializes a new instance of the <see cref="CommandAutoCompleteHandler"/> class.
     /// </summary>
     /// <param name="consoleCommands">All the registered <see cref="IConsoleCommand"/>.</param>
-    public CommandAutoCompleteHandler(IConsoleCommandCollection consoleCommands)
+    public CommandAutoCompleteHandler(IConsoleCommandHierarchy consoleCommands)
         => this.consoleCommands = consoleCommands;
 
     /// <inheritdoc/>

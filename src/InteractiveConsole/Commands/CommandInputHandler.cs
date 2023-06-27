@@ -13,13 +13,13 @@ internal sealed class CommandInputHandler : IInputHandler
     /// </summary>
     internal const char ArgumentSeparator = ' ';
 
-    private readonly IConsoleCommandCollection consoleCommands;
+    private readonly IConsoleCommandHierarchy consoleCommands;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="CommandInputHandler"/> class.
     /// </summary>
     /// <param name="consoleCommands">All the registered <see cref="IConsoleCommand"/>.</param>
-    public CommandInputHandler(IConsoleCommandCollection consoleCommands)
+    public CommandInputHandler(IConsoleCommandHierarchy consoleCommands)
         => this.consoleCommands = consoleCommands;
 
     /// <inheritdoc/>

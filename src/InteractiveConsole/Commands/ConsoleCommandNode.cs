@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace InteractiveConsole.Commands;
 
 /// <summary>
-/// A node for the <see cref="ConsoleCommandCollection"/>.
+/// A node for the <see cref="ConsoleCommandHierarchy"/>.
 /// </summary>
 internal sealed class ConsoleCommandNode : IConsoleCommandNode
 {
