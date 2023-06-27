@@ -34,10 +34,6 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to add the service to.</param>
     /// <returns>A reference to this instance after the operation has completed.</returns>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage(
-        "IDisposableAnalyzers.Correctness",
-        "IDISP004:Don't ignore created IDisposable",
-        Justification = "We can ignore the disposing because it's tied to application lifetime.")]
     public static IServiceCollection AddInteractiveConsole(this IServiceCollection services)
     {
         services.TryAddSingleton<IConsoleInput, AnsiConsoleInput>();
