@@ -122,7 +122,7 @@ internal sealed class AnsiConsoleOutput : TextWriter, IConsoleOutput, IDisposabl
                 start += staticText.Length;
                 resetCode.AsSpan().CopyTo(stagingBufferSpan[start..]);
 
-                stdOut.Write(stagingBuffer);
+                stdOut.Write(stagingBuffer, 0, writeLength);
             }
             finally
             {
