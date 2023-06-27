@@ -71,6 +71,8 @@ jobs:
     if: github.ref == 'refs/heads/main' || contains(github.ref, 'refs/tags/')
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
     steps:
       - name: Download Artifact
         id: download
