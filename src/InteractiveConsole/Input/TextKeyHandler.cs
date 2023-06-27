@@ -25,37 +25,43 @@ internal sealed class TextKeyHandler : IKeyHandler
     /// <inheritdoc/>
     public void Handle(ConsoleKeyInfo keyInfo)
     {
-        if (keyInfo.Key == ConsoleKey.Backspace && keyInfo.Modifiers == 0)
+        if (keyInfo.NoModifiersPressed()
+            && keyInfo.Key == ConsoleKey.Backspace)
         {
             BackSpace();
             return;
         }
 
-        if (keyInfo.Key == ConsoleKey.H && keyInfo.Modifiers == ConsoleModifiers.Control)
+        if (keyInfo.Modifiers == ConsoleModifiers.Control
+            && keyInfo.Key == ConsoleKey.H)
         {
             BackSpace();
             return;
         }
 
-        if (keyInfo.Key == ConsoleKey.Delete && keyInfo.Modifiers == 0)
+        if (keyInfo.NoModifiersPressed()
+            && keyInfo.Key == ConsoleKey.Delete)
         {
             Delete();
             return;
         }
 
-        if (keyInfo.Key == ConsoleKey.D && keyInfo.Modifiers == ConsoleModifiers.Control)
+        if (keyInfo.Modifiers == ConsoleModifiers.Control
+            && keyInfo.Key == ConsoleKey.D)
         {
             Delete();
             return;
         }
 
-        if (keyInfo.Key == ConsoleKey.Escape && keyInfo.Modifiers == 0)
+        if (keyInfo.NoModifiersPressed()
+            && keyInfo.Key == ConsoleKey.Escape)
         {
             ClearLine();
             return;
         }
 
-        if (keyInfo.Key == ConsoleKey.L && keyInfo.Modifiers == ConsoleModifiers.Control)
+        if (keyInfo.Modifiers == ConsoleModifiers.Control
+            && keyInfo.Key == ConsoleKey.L)
         {
             ClearLine();
             return;

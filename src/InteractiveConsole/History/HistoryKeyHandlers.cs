@@ -29,8 +29,8 @@ internal sealed class HistoryKeyHandlers : IKeyHandler
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0072:Add missing cases", Justification = "Only subset of items is needed")]
     public void Handle(ConsoleKeyInfo keyInfo)
     {
-        if (keyInfo.Key == ConsoleKey.Enter
-            && keyInfo.Modifiers == 0)
+        if (keyInfo.NoModifiersPressed()
+            && keyInfo.Key == ConsoleKey.Enter)
         {
             historyHandler.AddEntry(consoleInput.CurrentInput);
             return;
@@ -38,9 +38,9 @@ internal sealed class HistoryKeyHandlers : IKeyHandler
 
         var entry = keyInfo.Key switch
         {
-            ConsoleKey.UpArrow when keyInfo.Modifiers == 0 => historyHandler.PreviousEntry(),
+            ConsoleKey.UpArrow when keyInfo.NoModifiersPressed() => historyHandler.PreviousEntry(),
             ConsoleKey.P when keyInfo.Modifiers == ConsoleModifiers.Control => historyHandler.PreviousEntry(),
-            ConsoleKey.DownArrow when keyInfo.Modifiers == 0 => historyHandler.NextEntry(),
+            ConsoleKey.DownArrow when keyInfo.NoModifiersPressed() => historyHandler.NextEntry(),
             ConsoleKey.N when keyInfo.Modifiers == ConsoleModifiers.Control => historyHandler.NextEntry(),
             _ => null,
         };
