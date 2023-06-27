@@ -31,7 +31,7 @@ jobs:
         dotnet-version: ['6.0.x' ]
     runs-on: ${{ matrix.os }}
     outputs:
-        publicRelease: ${{ steps.nbgv.outputs.PublicRelease }}
+        publicRelease: ${{ env.NBGV_PublicRelease }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.3
@@ -44,6 +44,8 @@ jobs:
       - name: Nerdbank.GitVersioning
         id: nbgv
         uses: dotnet/nbgv@v0.4.0
+        with:
+          setAllVars: true
       - name: Restore dependencies
         run: dotnet restore ${{ env.SOLUTION_NAME }}
       - name: Build
@@ -57,7 +59,7 @@ jobs:
       - name: Pack
         id: pack
         if: matrix.os == 'ubuntu-latest' && (github.ref == 'refs/heads/main' || contains(github.ref, 'refs/tags/'))
-        run: dotnet pack ${{ env.SOLUTION_NAME }} --configuration Release --verbosity normal --no-build --nologo --no-restore /p:Version=${{ steps.nbgv.outputs.SemVer2 }} --output ./bin/Pack/
+        run: dotnet pack ${{ env.SOLUTION_NAME }} --configuration Release --verbosity normal --no-build --nologo --no-restore /p:Version=${{ env.NBGV_SemVer2 }} --output ./bin/Pack/
       - name: Upload Artifact
         if: steps.pack.outcome == 'success'
         uses: actions/upload-artifact@v3.1.2
