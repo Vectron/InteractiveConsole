@@ -13,7 +13,9 @@ await Host
     .ConfigureAwait(false);
 
 static void ConfigureServices(HostBuilderContext context, IServiceCollection collection)
-    => collection.AddConsoleCommand()
+    => collection
+    .AddInteractiveConsole()
+    .AddConsoleCommand()
     .AddScoped<IConsoleCommand, AdsConnectCommand>()
     .AddScoped<IConsoleCommand, AdsDisconnectCommand>()
     .AddScoped<IConsoleCommand, AdsReadCommand>()

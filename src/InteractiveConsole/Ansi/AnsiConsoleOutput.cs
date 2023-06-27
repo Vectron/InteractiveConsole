@@ -21,7 +21,7 @@ internal sealed class AnsiConsoleOutput : TextWriter, IConsoleOutput, IDisposabl
     private AnsiConsoleOutput()
     {
         stdOut = Console.Out;
-        Console.SetOut(this);
+        Console.SetOut(Synchronized(this));
     }
 
     /// <summary>
