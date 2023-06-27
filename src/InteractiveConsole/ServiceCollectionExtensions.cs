@@ -6,6 +6,7 @@ using InteractiveConsole.History;
 using InteractiveConsole.Input;
 using InteractiveConsole.KeyHandlers;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace InteractiveConsole;
 
@@ -20,29 +21,35 @@ public static class ServiceCollectionExtensions
     /// <param name="services">The <see cref="IServiceCollection"/> to add the service to.</param>
     /// <returns>A reference to this instance after the operation has completed.</returns>
     public static IServiceCollection AddConsoleCommand(this IServiceCollection services)
-        => services
-            .AddInteractiveConsole()
-            .AddSingleton<IAutoCompleteHandler, CommandAutoCompleteHandler>()
-            .AddSingleton<IInputHandler, CommandInputHandler>()
-            .AddScoped<IConsoleCommandCollection, ConsoleCommandCollection>();
+    {
+        _ = services.AddInteractiveConsole();
+        services.TryAddSingleton<IAutoCompleteHandler, CommandAutoCompleteHandler>();
+        services.TryAddSingleton<IInputHandler, CommandInputHandler>();
+        services.TryAddScoped<IConsoleCommandCollection, ConsoleCommandCollection>();
+        return services;
+    }
 
     /// <summary>
     /// Adds the services needed for running interactive console.
     /// </summary>
     /// <param name="services">The <see cref="IServiceCollection"/> to add the service to.</param>
     /// <returns>A reference to this instance after the operation has completed.</returns>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage(
+        "IDisposableAnalyzers.Correctness",
+        "IDISP004:Don't ignore created IDisposable",
+        Justification = "We can ignore the disposing because it's tied to application lifetime.")]
     public static IServiceCollection AddInteractiveConsole(this IServiceCollection services)
-        => services
-            .AddSingleton<IConsoleInput, AnsiConsoleInput>()
-            .AddSingleton<IConsoleOutput>(new AnsiConsoleOutput())
-            .AddSingleton<IConsoleCursor, AnsiConsoleCursor>()
-            .AddSingleton<IHistoryHandler, HistoryHandler>()
-            .AddHostedService<ConsoleInputHost>()
-            .AddSingleton<IKeyHandler, AutoCompleteKeyHandler>()
-            .AddSingleton<IKeyHandler, CursorKeyHandler>()
-            .AddSingleton<IKeyHandler, HistoryKeyHandlers>()
-            .AddSingleton<IKeyHandler, TextKeyHandler>()
-            .AddSingleton<IKeyHandler, EnterKeyHandler>()
-            .ConfigureOptions<ConsoleInputOptionsDefaults>()
-        ;
+    {
+        services.TryAddSingleton<IConsoleInput, AnsiConsoleInput>();
+        services.TryAddSingleton<IConsoleOutput>(new AnsiConsoleOutput());
+        services.TryAddSingleton<IConsoleCursor, AnsiConsoleCursor>();
+        services.TryAddSingleton<IHistoryHandler, HistoryHandler>();
+        services.TryAddEnumerable(ServiceDescriptor.Singleton<IKeyHandler, AutoCompleteKeyHandler>());
+        services.TryAddEnumerable(ServiceDescriptor.Singleton<IKeyHandler, CursorKeyHandler>());
+        services.TryAddEnumerable(ServiceDescriptor.Singleton<IKeyHandler, HistoryKeyHandlers>());
+        services.TryAddEnumerable(ServiceDescriptor.Singleton<IKeyHandler, TextKeyHandler>());
+        services.TryAddEnumerable(ServiceDescriptor.Singleton<IKeyHandler, EnterKeyHandler>());
+        return services.AddHostedService<ConsoleInputHost>()
+            .ConfigureOptions<ConsoleInputOptionsDefaults>();
+    }
 }
