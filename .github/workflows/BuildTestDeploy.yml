@@ -21,7 +21,7 @@ jobs:
     with:
       os: windows-latest
       dotnet_version: 7.0.x
-      solution_file: InteractiveConsole.sln
+      solution_file: Vectron.InteractiveConsole.sln
 
   call-deploy:
     needs: call-build-test
@@ -31,7 +31,7 @@ jobs:
     with:
       os: windows-latest
       dotnet_version: 7.0.x
-      solution_file: InteractiveConsole.sln
+      solution_file: Vectron.InteractiveConsole.sln
     secrets:
       NUGET_KEY: ${{ secrets.NUGET_KEY }}
       
