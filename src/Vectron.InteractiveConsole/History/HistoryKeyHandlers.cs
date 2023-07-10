@@ -1,4 +1,3 @@
-using Vectron.InteractiveConsole;
 using Vectron.InteractiveConsole.Cursor;
 using Vectron.InteractiveConsole.KeyHandlers;
 

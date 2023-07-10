@@ -1,5 +1,4 @@
 using System.Reflection;
-using Vectron.InteractiveConsole;
 
 namespace Vectron.InteractiveConsole.Tests;
 

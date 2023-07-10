@@ -1,4 +1,3 @@
-using Vectron.InteractiveConsole;
 using Vectron.InteractiveConsole.KeyHandlers;
 
 namespace Vectron.InteractiveConsole.Cursor;
@@ -25,8 +24,8 @@ internal sealed class CursorKeyHandler : IKeyHandler
     /// <inheritdoc/>
     public void Handle(ConsoleKeyInfo keyInfo)
     {
-        if (keyInfo.NoModifiersPressed() && keyInfo.Key is ConsoleKey.LeftArrow
-            || keyInfo.Modifiers == ConsoleModifiers.Control && keyInfo.Key == ConsoleKey.B)
+        if ((keyInfo.NoModifiersPressed() && keyInfo.Key is ConsoleKey.LeftArrow)
+            || (keyInfo.Modifiers == ConsoleModifiers.Control && keyInfo.Key == ConsoleKey.B))
         {
             consoleCursor.MoveBackward(1);
             return;
@@ -41,8 +40,8 @@ internal sealed class CursorKeyHandler : IKeyHandler
             return;
         }
 
-        if (keyInfo.NoModifiersPressed() && keyInfo.Key is ConsoleKey.RightArrow
-            || keyInfo.Modifiers == ConsoleModifiers.Control && keyInfo.Key == ConsoleKey.F)
+        if ((keyInfo.NoModifiersPressed() && keyInfo.Key is ConsoleKey.RightArrow)
+            || (keyInfo.Modifiers == ConsoleModifiers.Control && keyInfo.Key == ConsoleKey.F))
         {
             consoleCursor.MoveForward(1);
             return;
@@ -57,15 +56,15 @@ internal sealed class CursorKeyHandler : IKeyHandler
             return;
         }
 
-        if (keyInfo.NoModifiersPressed() && keyInfo.Key is ConsoleKey.Home
-            || keyInfo.Modifiers == ConsoleModifiers.Control && keyInfo.Key == ConsoleKey.A)
+        if ((keyInfo.NoModifiersPressed() && keyInfo.Key is ConsoleKey.Home)
+            || (keyInfo.Modifiers == ConsoleModifiers.Control && keyInfo.Key == ConsoleKey.A))
         {
             consoleCursor.MoveStart();
             return;
         }
 
-        if (keyInfo.NoModifiersPressed() && keyInfo.Key is ConsoleKey.End
-            || keyInfo.Modifiers == ConsoleModifiers.Control && keyInfo.Key == ConsoleKey.E)
+        if ((keyInfo.NoModifiersPressed() && keyInfo.Key is ConsoleKey.End)
+            || (keyInfo.Modifiers == ConsoleModifiers.Control && keyInfo.Key == ConsoleKey.E))
         {
             consoleCursor.MoveEnd();
             return;
