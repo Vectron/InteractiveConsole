@@ -9,5 +9,4 @@ Use (Shift)Tab for cycling through suggestions
 Use Up/Down arrows to cycle through previous commands.
 
 ## Authors
-
 - [@Vectron](https://www.github.com/Vectron)
