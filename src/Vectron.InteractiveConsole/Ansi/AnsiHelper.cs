@@ -1,12 +1,11 @@
 using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace Vectron.InteractiveConsole.Ansi;
 
 /// <summary>
 /// A helper class for generating ANSI escape sequences.
 /// </summary>
-internal static class AnsiHelper
+internal static partial class AnsiHelper
 {
     /// <summary>
     /// The control marker for starting the ANSI code.
@@ -17,9 +16,6 @@ internal static class AnsiHelper
     /// The ANSI reset code.
     /// </summary>
     public const string ResetAnsiEscapeCode = "\x1B[0m";
-
-    private static readonly Regex FindCursorEscapeSequence = new(@"\x1B\[[^@-~]*[ABCDabcd]", RegexOptions.Compiled, TimeSpan.FromSeconds(1));
-    private static readonly Regex RemoveEscapeSequence = new(@"\x1B\[[^@-~]*[@-~]", RegexOptions.Compiled, TimeSpan.FromSeconds(1));
 
     /// <summary>
     /// Dumps all possible colors to the screen.
@@ -217,7 +213,7 @@ internal static class AnsiHelper
     /// <param name="input">The input string.</param>
     /// <returns>A string without escape codes.</returns>
     public static string RemoveAnsiCodes(this string input)
-        => RemoveEscapeSequence.Replace(input, string.Empty);
+        => RemoveEscapeSequence().Replace(input, string.Empty);
 
     /// <summary>
     /// Remove ANSI cursor escape codes from the given string.
@@ -225,7 +221,7 @@ internal static class AnsiHelper
     /// <param name="input">The input string.</param>
     /// <returns>A string without cursor escape codes.</returns>
     public static string RemoveAnsiCursorCode(this string input)
-        => FindCursorEscapeSequence.Replace(input, string.Empty);
+        => FindCursorEscapeSequence().Replace(input, string.Empty);
 
     private static string CreateAnsiEscapeCode(int value)
         => $"{EscapeSequence}[{value.ToString(CultureInfo.InvariantCulture)}m";
@@ -235,4 +231,19 @@ internal static class AnsiHelper
         var brightCode = bright ? $";1" : string.Empty;
         return $"{EscapeSequence}[{value.ToString(CultureInfo.InvariantCulture)}{brightCode}m";
     }
+
+#if NET7_0_OR_GREATER
+
+    [System.Text.RegularExpressions.GeneratedRegex(
+        pattern: @"\x1B\[[^@-~]*[ABCDabcd]",
+        options: System.Text.RegularExpressions.RegexOptions.None,
+        matchTimeoutMilliseconds: 1000)]
+    private static partial System.Text.RegularExpressions.Regex FindCursorEscapeSequence();
+
+    [System.Text.RegularExpressions.GeneratedRegex(
+        pattern: @"\x1B\[[^@-~]*[@-~]",
+        options: System.Text.RegularExpressions.RegexOptions.None,
+        matchTimeoutMilliseconds: 1000)]
+    private static partial System.Text.RegularExpressions.Regex RemoveEscapeSequence();
+#endif
 }
