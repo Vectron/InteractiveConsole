@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -44,10 +45,30 @@ public sealed class HelpCommand : IConsoleCommand
 
         foreach (var command in consoleCommands)
         {
-            _ = builder.AppendJoin(' ', command.CommandParameters)
-                .Append(": ")
+            var commandBuilder = new StringBuilder();
+            _ = commandBuilder.AppendJoin(' ', command.CommandParameters);
+
+            for (var i = 0; i < command.MaxArguments; i++)
+            {
+                var name = i.ToString(CultureInfo.CurrentCulture);
+
+                if (command.ArgumentNames != null && i < command.ArgumentNames.Length)
+                {
+                    name = command.ArgumentNames[i];
+                }
+
+                _ = commandBuilder.Append(" <")
+                    .Append(name)
+                    .Append('>');
+            }
+
+            var helpTextOffset = Ansi.AnsiHelper.GetAnsiEscapeCode(Ansi.AnsiCursorDirection.Right, 25 - commandBuilder.Length);
+            _ = commandBuilder.Append(": ")
+                .Append(helpTextOffset)
                 .Append(command.HelpText)
                 .AppendLine();
+
+            _ = builder.Append(commandBuilder);
         }
 
         Console.WriteLine(builder.ToString());
