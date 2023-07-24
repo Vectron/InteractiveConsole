@@ -1,11 +1,11 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Vectron.InteractiveConsole.Commands;
 
 /// <summary>
 /// A collection for holding <see cref="IConsoleCommand"/>.
 /// </summary>
-public interface IConsoleCommandHierarchy
+public interface IConsoleCommandHierarchy : IEnumerable<IConsoleCommand>
 {
     /// <summary>
     /// Get all the direct descendants for the given command arguments.

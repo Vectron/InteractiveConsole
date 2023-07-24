@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Vectron.InteractiveConsole.Commands;
@@ -35,7 +36,7 @@ internal sealed class ConsoleCommandHierarchy : IConsoleCommandHierarchy
     /// <inheritdoc/>
     public IEnumerable<IConsoleCommand> GetDescendantsFor(string[] commandArguments)
     {
-        var node = (IConsoleCommandNode)root;
+        IConsoleCommandNode node = root;
         foreach (var key in commandArguments)
         {
             if (!node.TryGetChildNode(key, out var nextNode))
@@ -48,6 +49,13 @@ internal sealed class ConsoleCommandHierarchy : IConsoleCommandHierarchy
 
         return node.Children;
     }
+
+    /// <inheritdoc/>
+    public IEnumerator<IConsoleCommand> GetEnumerator()
+        => root.Children.GetEnumerator();
+
+    /// <inheritdoc/>
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     /// <inheritdoc/>
     public bool TryGetCommand(string[] commandArguments, [NotNullWhen(true)] out IConsoleCommand? consoleCommand)
