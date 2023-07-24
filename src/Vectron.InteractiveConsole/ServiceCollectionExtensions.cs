@@ -27,6 +27,7 @@ public static class ServiceCollectionExtensions
         services.TryAddSingleton<IInputHandler, CommandInputHandler>();
         services.TryAddScoped<IConsoleCommandHierarchy, ConsoleCommandHierarchy>();
         services.TryAddEnumerable(ServiceDescriptor.Transient<IConsoleCommand, HelpCommand>());
+        services.TryAddEnumerable(ServiceDescriptor.Transient<IConsoleCommand, CloseApplicationCommand>());
         return services;
     }
 
