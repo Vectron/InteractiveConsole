@@ -8,6 +8,9 @@ namespace Vectron.InteractiveConsole.Sandbox.Ads;
 internal sealed class AdsConnectCommand : IConsoleCommand
 {
     /// <inheritdoc/>
+    public string[]? ArgumentNames => null;
+
+    /// <inheritdoc/>
     public string[] CommandParameters => new[] { "ads", "connect" };
 
     /// <inheritdoc/>

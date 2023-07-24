@@ -8,6 +8,9 @@ namespace Vectron.InteractiveConsole.Sandbox.Ads;
 internal sealed class AdsDisconnectCommand : IConsoleCommand
 {
     /// <inheritdoc/>
+    public string[]? ArgumentNames => null;
+
+    /// <inheritdoc/>
     public string[] CommandParameters => new[] { "ads", "disconnect" };
 
     /// <inheritdoc/>

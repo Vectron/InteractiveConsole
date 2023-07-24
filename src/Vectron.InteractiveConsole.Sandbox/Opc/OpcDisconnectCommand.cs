@@ -8,6 +8,9 @@ namespace Vectron.InteractiveConsole.Sandbox.Opc;
 internal sealed class OpcDisconnectCommand : IConsoleCommand
 {
     /// <inheritdoc/>
+    public string[]? ArgumentNames => null;
+
+    /// <inheritdoc/>
     public string[] CommandParameters => new[] { "opc", "disconnect" };
 
     /// <inheritdoc/>

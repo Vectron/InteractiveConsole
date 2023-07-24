@@ -16,6 +16,9 @@ internal sealed class CloseApplicationCommand : IConsoleCommand
     public CloseApplicationCommand(IHostApplicationLifetime hostApplicationLifetime) => this.hostApplicationLifetime = hostApplicationLifetime;
 
     /// <inheritdoc/>
+    public string[]? ArgumentNames => null;
+
+    /// <inheritdoc/>
     public string[] CommandParameters => new[] { "exit" };
 
     /// <inheritdoc/>

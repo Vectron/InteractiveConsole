@@ -6,6 +6,14 @@ namespace Vectron.InteractiveConsole.Commands;
 public interface IConsoleCommand
 {
     /// <summary>
+    /// Gets a collection of names for the arguments.
+    /// </summary>
+    string[]? ArgumentNames
+    {
+        get;
+    }
+
+    /// <summary>
     /// Gets the command parameters.
     /// </summary>
     string[] CommandParameters

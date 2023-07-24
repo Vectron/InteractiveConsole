@@ -17,6 +17,9 @@ public sealed class HelpCommand : IConsoleCommand
         => this.consoleCommands = consoleCommands;
 
     /// <inheritdoc/>
+    public string[]? ArgumentNames => null;
+
+    /// <inheritdoc/>
     public string[] CommandParameters => new[] { "help" };
 
     /// <inheritdoc/>

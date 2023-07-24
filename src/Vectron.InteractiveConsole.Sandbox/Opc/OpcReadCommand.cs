@@ -8,6 +8,9 @@ namespace Vectron.InteractiveConsole.Sandbox.Opc;
 internal sealed class OpcReadCommand : IConsoleCommand
 {
     /// <inheritdoc/>
+    public string[]? ArgumentNames => new[] { "tag" };
+
+    /// <inheritdoc/>
     public string[] CommandParameters => new[] { "opc", "read" };
 
     /// <inheritdoc/>

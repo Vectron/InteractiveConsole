@@ -8,6 +8,9 @@ namespace Vectron.InteractiveConsole.Sandbox.Ads;
 internal sealed class AdsMonitorCommand : IConsoleCommand
 {
     /// <inheritdoc/>
+    public string[]? ArgumentNames => new[] { "tag" };
+
+    /// <inheritdoc/>
     public string[] CommandParameters => new[] { "ads", "monitor" };
 
     /// <inheritdoc/>
