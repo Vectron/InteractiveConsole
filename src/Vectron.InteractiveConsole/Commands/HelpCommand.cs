@@ -1,4 +1,5 @@
 using System.Text;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Vectron.InteractiveConsole.Commands;
 
@@ -7,14 +8,14 @@ namespace Vectron.InteractiveConsole.Commands;
 /// </summary>
 public sealed class HelpCommand : IConsoleCommand
 {
-    private readonly IEnumerable<IConsoleCommand> consoleCommands;
+    private readonly IServiceProvider serviceProvider;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="HelpCommand"/> class.
     /// </summary>
-    /// <param name="consoleCommands">The commands to add to this collection.</param>
-    public HelpCommand(IEnumerable<IConsoleCommand> consoleCommands)
-        => this.consoleCommands = consoleCommands;
+    /// <param name="serviceProvider">A <see cref="IServiceProvider"/> instance.</param>
+    public HelpCommand(IServiceProvider serviceProvider)
+        => this.serviceProvider = serviceProvider;
 
     /// <inheritdoc/>
     public string[]? ArgumentNames => null;
@@ -35,6 +36,12 @@ public sealed class HelpCommand : IConsoleCommand
     public void Execute(string[] arguments)
     {
         var builder = new StringBuilder();
+        var consoleCommands = serviceProvider.GetService<IConsoleCommandHierarchy>();
+        if (consoleCommands == null)
+        {
+            return;
+        }
+
         foreach (var command in consoleCommands)
         {
             _ = builder.AppendJoin(' ', command.CommandParameters)
