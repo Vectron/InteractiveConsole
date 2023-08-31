@@ -1,3 +1,4 @@
+using Vectron.Ansi;
 using Vectron.InteractiveConsole.Ansi;
 
 namespace Vectron.InteractiveConsole;

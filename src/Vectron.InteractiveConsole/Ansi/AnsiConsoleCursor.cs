@@ -1,3 +1,4 @@
+using Vectron.Ansi;
 using Vectron.InteractiveConsole.Cursor;
 
 namespace Vectron.InteractiveConsole.Ansi;
@@ -48,7 +49,7 @@ internal sealed class AnsiConsoleCursor : IConsoleCursor
     private void UpdateCursorPosition()
     {
         var inputLength = consoleInput.CurrentInput.Length;
-        var newStaticText = consoleOutput.StaticText.RemoveAnsiCursorCode();
+        var newStaticText = AnsiHelper.RemoveAnsiCursorCode(consoleOutput.StaticText);
         if (CursorIndex >= inputLength || inputLength == 0)
         {
             consoleOutput.StaticText = newStaticText;

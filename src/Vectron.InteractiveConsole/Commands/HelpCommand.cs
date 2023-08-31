@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
+using Vectron.Ansi;
 
 namespace Vectron.InteractiveConsole.Commands;
 
@@ -62,7 +63,7 @@ public sealed class HelpCommand : IConsoleCommand
                     .Append('>');
             }
 
-            var helpTextOffset = Ansi.AnsiHelper.GetAnsiEscapeCode(Ansi.AnsiCursorDirection.Right, 25 - commandBuilder.Length);
+            var helpTextOffset = AnsiHelper.GetAnsiEscapeCode(AnsiCursorDirection.Right, 25 - commandBuilder.Length);
             _ = commandBuilder.Append(": ")
                 .Append(helpTextOffset)
                 .Append(command.HelpText)

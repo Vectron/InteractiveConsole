@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Options;
+using Vectron.Ansi;
 using Vectron.InteractiveConsole.Cursor;
 
 namespace Vectron.InteractiveConsole.Ansi;

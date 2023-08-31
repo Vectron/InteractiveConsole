@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Options;
-using Vectron.InteractiveConsole.Ansi;
+using Vectron.Ansi;
 
 namespace Vectron.InteractiveConsole;
 

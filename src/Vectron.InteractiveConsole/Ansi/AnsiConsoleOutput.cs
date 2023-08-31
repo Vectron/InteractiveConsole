@@ -1,5 +1,6 @@
 using System.Buffers;
 using System.Text;
+using Vectron.Ansi;
 
 namespace Vectron.InteractiveConsole.Ansi;
 
@@ -55,7 +56,7 @@ internal sealed class AnsiConsoleOutput : TextWriter, IConsoleOutput, IDisposabl
             try
             {
                 var cursorReset = GetCursorReset();
-                var resetCode = AnsiHelper.ResetAnsiEscapeCode;
+                var resetCode = AnsiHelper.ResetColorAndStyleAnsiEscapeCode;
                 staticText = value;
                 sanitizedText = staticText.RemoveAnsiCodes();
                 stdOut.Write(cursorReset + staticText + resetCode);
@@ -82,7 +83,7 @@ internal sealed class AnsiConsoleOutput : TextWriter, IConsoleOutput, IDisposabl
         try
         {
             var cursorReset = GetCursorReset();
-            var resetCode = AnsiHelper.ResetAnsiEscapeCode;
+            var resetCode = AnsiHelper.ResetColorAndStyleAnsiEscapeCode;
 
             stdOut.Write(cursorReset + value + resetCode + staticText + resetCode);
         }
@@ -99,7 +100,7 @@ internal sealed class AnsiConsoleOutput : TextWriter, IConsoleOutput, IDisposabl
         try
         {
             var cursorReset = GetCursorReset();
-            var resetCode = AnsiHelper.ResetAnsiEscapeCode;
+            var resetCode = AnsiHelper.ResetColorAndStyleAnsiEscapeCode;
 
             var writeLength = cursorReset.Length
                 + buffer.Length
