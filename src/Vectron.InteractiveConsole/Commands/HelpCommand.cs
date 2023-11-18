@@ -8,17 +8,12 @@ namespace Vectron.InteractiveConsole.Commands;
 /// <summary>
 /// A <see cref="IConsoleCommand"/> that prints a help text.
 /// </summary>
-public sealed class HelpCommand : IConsoleCommand
+/// <remarks>
+/// Initializes a new instance of the <see cref="HelpCommand"/> class.
+/// </remarks>
+/// <param name="serviceProvider">A <see cref="IServiceProvider"/> instance.</param>
+public sealed class HelpCommand(IServiceProvider serviceProvider) : IConsoleCommand
 {
-    private readonly IServiceProvider serviceProvider;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="HelpCommand"/> class.
-    /// </summary>
-    /// <param name="serviceProvider">A <see cref="IServiceProvider"/> instance.</param>
-    public HelpCommand(IServiceProvider serviceProvider)
-        => this.serviceProvider = serviceProvider;
-
     /// <inheritdoc/>
     public string[]? ArgumentNames => null;
 

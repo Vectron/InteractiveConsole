@@ -6,17 +6,13 @@ namespace Vectron.InteractiveConsole;
 /// <summary>
 /// A console input checker.
 /// </summary>
-internal sealed class ConsoleInputHost : BackgroundService
+/// <remarks>
+/// Initializes a new instance of the <see cref="ConsoleInputHost"/> class.
+/// </remarks>
+/// <param name="keyHandlers">The key handlers for processing the input.</param>
+internal sealed class ConsoleInputHost(IEnumerable<IKeyHandler> keyHandlers) : BackgroundService
 {
     private const string InteractiveModeText = "INTERACTIVE MODE - type 'help' for help or 'exit' to EXIT";
-    private readonly IEnumerable<IKeyHandler> keyHandlers;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="ConsoleInputHost"/> class.
-    /// </summary>
-    /// <param name="keyHandlers">The key handlers for processing the input.</param>
-    public ConsoleInputHost(IEnumerable<IKeyHandler> keyHandlers)
-        => this.keyHandlers = keyHandlers;
 
     /// <inheritdoc/>
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)

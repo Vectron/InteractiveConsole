@@ -6,21 +6,16 @@ namespace Vectron.InteractiveConsole.Commands;
 /// <summary>
 /// An input handler for processing commands.
 /// </summary>
-internal sealed class CommandInputHandler : IInputHandler
+/// <remarks>
+/// Initializes a new instance of the <see cref="CommandInputHandler"/> class.
+/// </remarks>
+/// <param name="consoleCommands">All the registered <see cref="IConsoleCommand"/>.</param>
+internal sealed class CommandInputHandler(IConsoleCommandHierarchy consoleCommands) : IInputHandler
 {
     /// <summary>
     /// The separator for command arguments.
     /// </summary>
     internal const char ArgumentSeparator = ' ';
-
-    private readonly IConsoleCommandHierarchy consoleCommands;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CommandInputHandler"/> class.
-    /// </summary>
-    /// <param name="consoleCommands">All the registered <see cref="IConsoleCommand"/>.</param>
-    public CommandInputHandler(IConsoleCommandHierarchy consoleCommands)
-        => this.consoleCommands = consoleCommands;
 
     /// <inheritdoc/>
     public void ProcessInput(string input)

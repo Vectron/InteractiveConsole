@@ -6,22 +6,14 @@ namespace Vectron.InteractiveConsole.Ansi;
 /// <summary>
 /// A <see cref="IConsoleCursor"/> implementation for an ANSI capable console.
 /// </summary>
-internal sealed class AnsiConsoleCursor : IConsoleCursor
+/// <remarks>
+/// Initializes a new instance of the <see cref="AnsiConsoleCursor"/> class.
+/// </remarks>
+/// <param name="consoleInput">A <see cref="IConsoleInput"/> instance.</param>
+/// <param name="consoleOutput">A <see cref="IConsoleOutput"/> instance.</param>
+internal sealed class AnsiConsoleCursor(IConsoleInput consoleInput, IConsoleOutput consoleOutput) : IConsoleCursor
 {
-    private readonly IConsoleInput consoleInput;
-    private readonly IConsoleOutput consoleOutput;
     private int cursorIndex;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="AnsiConsoleCursor"/> class.
-    /// </summary>
-    /// <param name="consoleInput">A <see cref="IConsoleInput"/> instance.</param>
-    /// <param name="consoleOutput">A <see cref="IConsoleOutput"/> instance.</param>
-    public AnsiConsoleCursor(IConsoleInput consoleInput, IConsoleOutput consoleOutput)
-    {
-        this.consoleInput = consoleInput;
-        this.consoleOutput = consoleOutput;
-    }
 
     /// <inheritdoc/>
     public int CursorIndex

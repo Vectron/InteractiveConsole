@@ -5,19 +5,15 @@ namespace Vectron.InteractiveConsole.Commands;
 /// <summary>
 /// A Autocomplete handler for commands.
 /// </summary>
-internal sealed class CommandAutoCompleteHandler : IAutoCompleteHandler
+/// <remarks>
+/// Initializes a new instance of the <see cref="CommandAutoCompleteHandler"/> class.
+/// </remarks>
+/// <param name="consoleCommands">All the registered <see cref="IConsoleCommand"/>.</param>
+internal sealed class CommandAutoCompleteHandler(IConsoleCommandHierarchy consoleCommands) : IAutoCompleteHandler
 {
-    private readonly IConsoleCommandHierarchy consoleCommands;
     private LinkedList<string> autoCompletions = new();
     private LinkedListNode<string>? current;
     private string rootCommand = string.Empty;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CommandAutoCompleteHandler"/> class.
-    /// </summary>
-    /// <param name="consoleCommands">All the registered <see cref="IConsoleCommand"/>.</param>
-    public CommandAutoCompleteHandler(IConsoleCommandHierarchy consoleCommands)
-        => this.consoleCommands = consoleCommands;
 
     /// <inheritdoc/>
     public string? NextSuggestions(string text)

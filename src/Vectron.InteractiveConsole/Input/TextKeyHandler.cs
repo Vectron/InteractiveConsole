@@ -6,22 +6,13 @@ namespace Vectron.InteractiveConsole.Input;
 /// <summary>
 /// Handles the manipulating of text input.
 /// </summary>
-internal sealed class TextKeyHandler : IKeyHandler
+/// <remarks>
+/// Initializes a new instance of the <see cref="TextKeyHandler"/> class.
+/// </remarks>
+/// <param name="consoleInput">A <see cref="IConsoleInput"/> instance.</param>
+/// <param name="consoleCursor">A <see cref="IConsoleCursor"/> instance.</param>
+internal sealed class TextKeyHandler(IConsoleInput consoleInput, IConsoleCursor consoleCursor) : IKeyHandler
 {
-    private readonly IConsoleCursor consoleCursor;
-    private readonly IConsoleInput consoleInput;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="TextKeyHandler"/> class.
-    /// </summary>
-    /// <param name="consoleInput">A <see cref="IConsoleInput"/> instance.</param>
-    /// <param name="consoleCursor">A <see cref="IConsoleCursor"/> instance.</param>
-    public TextKeyHandler(IConsoleInput consoleInput, IConsoleCursor consoleCursor)
-    {
-        this.consoleInput = consoleInput;
-        this.consoleCursor = consoleCursor;
-    }
-
     /// <inheritdoc/>
     public void Handle(ConsoleKeyInfo keyInfo)
     {

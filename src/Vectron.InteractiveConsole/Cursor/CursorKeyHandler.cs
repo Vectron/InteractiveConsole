@@ -5,22 +5,13 @@ namespace Vectron.InteractiveConsole.Cursor;
 /// <summary>
 /// Handles the keys for moving the cursor.
 /// </summary>
-internal sealed class CursorKeyHandler : IKeyHandler
+/// <remarks>
+/// Initializes a new instance of the <see cref="CursorKeyHandler"/> class.
+/// </remarks>
+/// <param name="consoleInput">A <see cref="IConsoleInput"/> instance.</param>
+/// <param name="consoleCursor">A <see cref="IConsoleCursor"/> instance.</param>
+internal sealed class CursorKeyHandler(IConsoleInput consoleInput, IConsoleCursor consoleCursor) : IKeyHandler
 {
-    private readonly IConsoleCursor consoleCursor;
-    private readonly IConsoleInput consoleInput;
-
-    /// <summary>
-    /// Initializes a new instance of the <see cref="CursorKeyHandler"/> class.
-    /// </summary>
-    /// <param name="consoleInput">A <see cref="IConsoleInput"/> instance.</param>
-    /// <param name="consoleCursor">A <see cref="IConsoleCursor"/> instance.</param>
-    public CursorKeyHandler(IConsoleInput consoleInput, IConsoleCursor consoleCursor)
-    {
-        this.consoleInput = consoleInput;
-        this.consoleCursor = consoleCursor;
-    }
-
     /// <inheritdoc/>
     public void Handle(ConsoleKeyInfo keyInfo)
     {
