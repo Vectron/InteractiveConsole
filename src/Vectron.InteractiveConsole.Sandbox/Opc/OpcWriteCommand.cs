@@ -8,10 +8,10 @@ namespace Vectron.InteractiveConsole.Sandbox.Opc;
 internal sealed class OpcWriteCommand : IConsoleCommand
 {
     /// <inheritdoc/>
-    public string[]? ArgumentNames => new[] { "tag", "value" };
+    public string[]? ArgumentNames => ["tag", "value"];
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "opc", "write" };
+    public string[] CommandParameters => ["opc", "write"];
 
     /// <inheritdoc/>
     public string HelpText => "Write a value to the PLC through OPC";

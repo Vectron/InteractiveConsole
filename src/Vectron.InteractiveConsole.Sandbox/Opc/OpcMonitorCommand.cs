@@ -8,10 +8,10 @@ namespace Vectron.InteractiveConsole.Sandbox.Opc;
 internal sealed class OpcMonitorCommand : IConsoleCommand
 {
     /// <inheritdoc/>
-    public string[]? ArgumentNames => new[] { "tag" };
+    public string[]? ArgumentNames => ["tag"];
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "opc", "monitor" };
+    public string[] CommandParameters => ["opc", "monitor"];
 
     /// <inheritdoc/>
     public string HelpText => "Monitor a value from the PLC through OPC";

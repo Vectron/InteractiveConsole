@@ -8,10 +8,10 @@ namespace Vectron.InteractiveConsole.Sandbox.Opc;
 internal sealed class OpcUnmonitorCommand : IConsoleCommand
 {
     /// <inheritdoc/>
-    public string[]? ArgumentNames => new[] { "tag" };
+    public string[]? ArgumentNames => ["tag"];
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "opc", "unmonitor" };
+    public string[] CommandParameters => ["opc", "unmonitor"];
 
     /// <inheritdoc/>
     public string HelpText => "Stop monitor a value in the PLC through OPC";

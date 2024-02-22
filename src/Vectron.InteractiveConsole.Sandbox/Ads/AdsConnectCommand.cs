@@ -11,7 +11,7 @@ internal sealed class AdsConnectCommand : IConsoleCommand
     public string[]? ArgumentNames => null;
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "ads", "connect" };
+    public string[] CommandParameters => ["ads", "connect"];
 
     /// <inheritdoc/>
     public string HelpText => "Connect to the PLC through ADS";

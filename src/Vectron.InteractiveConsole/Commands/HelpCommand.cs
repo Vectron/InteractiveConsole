@@ -18,7 +18,7 @@ public sealed class HelpCommand(IServiceProvider serviceProvider) : IConsoleComm
     public string[]? ArgumentNames => null;
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "help" };
+    public string[] CommandParameters => ["help"];
 
     /// <inheritdoc/>
     public string HelpText => "prints usages information";

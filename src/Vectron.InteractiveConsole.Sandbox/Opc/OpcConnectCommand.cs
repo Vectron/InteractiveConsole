@@ -11,7 +11,7 @@ internal sealed class OpcConnectCommand : IConsoleCommand
     public string[]? ArgumentNames => null;
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "opc", "connect" };
+    public string[] CommandParameters => ["opc", "connect"];
 
     /// <inheritdoc/>
     public string HelpText => "Connect to the PLC through OPC";

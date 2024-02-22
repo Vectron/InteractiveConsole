@@ -8,10 +8,10 @@ namespace Vectron.InteractiveConsole.Sandbox.Opc;
 internal sealed class OpcReadCommand : IConsoleCommand
 {
     /// <inheritdoc/>
-    public string[]? ArgumentNames => new[] { "tag" };
+    public string[]? ArgumentNames => ["tag"];
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "opc", "read" };
+    public string[] CommandParameters => ["opc", "read"];
 
     /// <inheritdoc/>
     public string HelpText => "Read a value from the PLC through OPC";

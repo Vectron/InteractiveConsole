@@ -8,10 +8,10 @@ namespace Vectron.InteractiveConsole.Sandbox.Ads;
 internal sealed class AdsReadCommand : IConsoleCommand
 {
     /// <inheritdoc/>
-    public string[]? ArgumentNames => new[] { "tag" };
+    public string[]? ArgumentNames => ["tag"];
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "ads", "read" };
+    public string[] CommandParameters => ["ads", "read"];
 
     /// <inheritdoc/>
     public string HelpText => "Read a value from the PLC through ADS";

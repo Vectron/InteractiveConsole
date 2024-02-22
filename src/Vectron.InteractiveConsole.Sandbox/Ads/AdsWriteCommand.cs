@@ -8,10 +8,10 @@ namespace Vectron.InteractiveConsole.Sandbox.Ads;
 internal sealed class AdsWriteCommand : IConsoleCommand
 {
     /// <inheritdoc/>
-    public string[]? ArgumentNames => new[] { "tag", "value" };
+    public string[]? ArgumentNames => ["tag", "value"];
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "ads", "write" };
+    public string[] CommandParameters => ["ads", "write"];
 
     /// <inheritdoc/>
     public string HelpText => "Write a value to the PLC through ADS";

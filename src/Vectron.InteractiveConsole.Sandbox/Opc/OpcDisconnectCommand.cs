@@ -11,7 +11,7 @@ internal sealed class OpcDisconnectCommand : IConsoleCommand
     public string[]? ArgumentNames => null;
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "opc", "disconnect" };
+    public string[] CommandParameters => ["opc", "disconnect"];
 
     /// <inheritdoc/>
     public string HelpText => "Disconnect from the PLC through OPC";

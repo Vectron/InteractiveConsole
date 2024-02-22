@@ -11,7 +11,7 @@ internal sealed class AdsDisconnectCommand : IConsoleCommand
     public string[]? ArgumentNames => null;
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "ads", "disconnect" };
+    public string[] CommandParameters => ["ads", "disconnect"];
 
     /// <inheritdoc/>
     public string HelpText => "Disconnect from the PLC through ADS";

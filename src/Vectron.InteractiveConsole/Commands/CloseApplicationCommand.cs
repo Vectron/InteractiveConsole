@@ -15,7 +15,7 @@ internal sealed class CloseApplicationCommand(IHostApplicationLifetime hostAppli
     public string[]? ArgumentNames => null;
 
     /// <inheritdoc/>
-    public string[] CommandParameters => new[] { "exit" };
+    public string[] CommandParameters => ["exit"];
 
     /// <inheritdoc/>
     public string HelpText => "Close the application";
